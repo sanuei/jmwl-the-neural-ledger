@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cryptofuture2026-neural-ledger.pages.dev/sitemap.xml

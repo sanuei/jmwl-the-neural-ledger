@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  
+  --color-primary: #9cff93;
+  --color-primary-container: #00fc40;
+  --color-surface: #0e0e0e;
+  --color-surface-low: #131313;
+  --color-surface-highest: #262626;
+  --color-tertiary: #8af2ff;
+  
+  --tracking-widest: 0.2em;
+  --tracking-tighter: -0.05em;
+}
+
+@layer base {
+  body {
+    @apply font-body bg-surface text-white;
+    background-image:
+      radial-gradient(circle at 18% 16%, rgba(126, 245, 255, 0.08) 0, transparent 18rem),
+      radial-gradient(circle at 82% 10%, rgba(156, 255, 147, 0.1) 0, transparent 20rem),
+      radial-gradient(circle at 50% 100%, rgba(156, 255, 147, 0.05) 0, transparent 24rem),
+      radial-gradient(#131313 1px, transparent 1px);
+    background-size: auto, auto, auto, 24px 24px;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-surface-highest/20 backdrop-blur-xl border border-primary/10;
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 15px rgba(156, 255, 147, 0.5);
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-container text-black px-8 py-3 font-headline font-bold tracking-widest uppercase text-xs transition-all hover:shadow-[0_0_20px_rgba(156,255,147,0.4)] active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply border border-primary/20 text-primary px-8 py-3 font-headline font-bold tracking-widest uppercase text-xs transition-all hover:bg-primary/5 active:scale-95;
+  }
+
+  .brand-frame {
+    @apply relative isolate overflow-hidden border border-white/10 bg-white/[0.03] shadow-[0_20px_40px_rgba(0,0,0,0.28)];
+  }
+
+  .brand-mark {
+    filter: drop-shadow(0 0 18px rgba(126, 245, 255, 0.18));
+  }
+
+  .brand-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(145deg, rgba(126, 245, 255, 0.16), rgba(126, 245, 255, 0.04) 38%, rgba(177, 255, 141, 0.18));
+    z-index: -2;
+  }
+
+  .brand-frame::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(145deg, rgba(5, 17, 21, 0.95), rgba(10, 19, 23, 0.76));
+    z-index: -1;
+  }
+}
