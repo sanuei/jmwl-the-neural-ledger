@@ -88,7 +88,7 @@ export const applySeo = (lang: Lang) => {
       "@type": "Organization",
       name: "JMWL / CryptoFuture2026",
       url: SITE_URL,
-      logo: `${SITE_URL}brand-mark.png`,
+      logo: `${SITE_URL}brand-wordmark.png`,
       sameAs: [YOUTUBE_URL],
     },
   ]);
