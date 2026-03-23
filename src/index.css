@@ -72,6 +72,7 @@
   }
 
   .brand-wordmark-img {
+    border-radius: 0.95rem;
     filter: drop-shadow(0 0 18px rgba(143, 184, 255, 0.18));
   }
 
