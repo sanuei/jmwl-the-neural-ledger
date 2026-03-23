@@ -9,15 +9,15 @@ type BrandLockupProps = {
 
 const sizeMap = {
   sm: {
-    wordmark: "h-6 md:h-7",
+    wordmark: "h-12 md:h-14",
     tagline: "text-[9px]",
   },
   md: {
-    wordmark: "h-8 md:h-9",
+    wordmark: "h-16 md:h-18",
     tagline: "text-[10px]",
   },
   lg: {
-    wordmark: "h-10 md:h-11",
+    wordmark: "h-20 md:h-22",
     tagline: "text-[11px]",
   },
 } satisfies Record<
