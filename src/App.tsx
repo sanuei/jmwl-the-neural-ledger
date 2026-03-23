@@ -56,7 +56,7 @@ const LangToggle = () => {
   return (
     <button
       onClick={() => setLang(lang === "zh" ? "en" : "zh")}
-      className="flex items-center gap-1.5 px-3 py-1.5 border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-primary font-headline text-[10px] tracking-widest uppercase"
+      className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-primary transition-colors hover:bg-white/[0.06] font-headline text-[10px] tracking-[0.22em]"
       title={lang === "zh" ? "Switch to English" : "切换到中文"}
     >
       <Languages className="w-3.5 h-3.5" />
@@ -70,73 +70,77 @@ const Navbar = () => {
   const { t } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-primary/10">
-      <div className="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
-        <a href="#hero" className="shrink-0">
-          <BrandLockup size="sm" showTagline={false} />
-        </a>
-        <div className="hidden md:flex items-center gap-10">
-          {[
-            { name: t("nav.launchpad"), href: "#hero" },
-            { name: t("nav.tokenomics"), href: "#tokenomics" },
-            { name: t("nav.roadmap"), href: "#roadmap" },
-            { name: t("nav.community"), href: "#community" },
-            { name: t("nav.whitepaper"), href: OKX_URL },
-          ].map((item, i) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`font-headline tracking-widest uppercase text-[10px] transition-colors ${
-                i === 0
-                  ? "text-primary border-b-2 border-primary pb-1"
-                  : "text-gray-400 hover:text-primary"
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-        <div className="flex items-center gap-3">
-          <LangToggle />
-          <a
-            href={OKX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block"
-          >
-            {t("nav.buy")}
+    <nav className="fixed inset-x-0 top-4 z-50 px-4">
+      <div className="mx-auto max-w-7xl rounded-[1.85rem] border border-white/10 bg-[rgba(5,8,22,0.72)] shadow-[0_18px_50px_rgba(2,6,23,0.38)] backdrop-blur-2xl">
+        <div className="flex h-[78px] items-center justify-between px-5 md:px-7">
+          <a href="#hero" className="shrink-0">
+            <BrandLockup size="sm" showMeta={false} />
           </a>
-          <button
-            className="md:hidden text-primary"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            <Layers className="w-6 h-6" />
-          </button>
-        </div>
-      </div>
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-surface-low border-t border-primary/10 p-6 space-y-4"
-        >
-          {[
-            { name: t("nav.launchpad"), href: "#hero" },
-            { name: t("nav.tokenomics"), href: "#tokenomics" },
-            { name: t("nav.roadmap"), href: "#roadmap" },
-            { name: t("nav.community"), href: "#community" },
-          ].map((item) => (
+          <div className="hidden md:flex items-center gap-2">
+            {[
+              { name: t("nav.launchpad"), href: "#hero" },
+              { name: t("nav.tokenomics"), href: "#tokenomics" },
+              { name: t("nav.roadmap"), href: "#roadmap" },
+              { name: t("nav.community"), href: "#community" },
+              { name: t("nav.whitepaper"), href: OKX_URL },
+            ].map((item, i) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`rounded-full px-4 py-2 font-headline text-[10px] tracking-[0.28em] transition-colors ${
+                  i === 0
+                    ? "bg-white/[0.05] text-primary shadow-[inset_0_0_0_1px_rgba(152,255,215,0.18)]"
+                    : "text-slate-400 hover:bg-white/[0.03] hover:text-white"
+                }`}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-2.5">
+            <LangToggle />
             <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="block font-headline text-xs tracking-widest uppercase text-gray-400 hover:text-primary"
+              href={OKX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary hidden sm:inline-flex"
             >
-              {item.name}
+              {t("nav.buy")}
             </a>
-          ))}
-        </motion.div>
-      )}
+            <button
+              className="md:hidden rounded-full border border-white/10 bg-white/[0.03] p-2.5 text-primary"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              <Layers className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="m-3 rounded-[1.6rem] border border-white/10 bg-[rgba(8,14,30,0.92)] p-6 shadow-[0_20px_50px_rgba(2,6,23,0.4)] backdrop-blur-2xl md:hidden"
+          >
+            <div className="space-y-3">
+              {[
+                { name: t("nav.launchpad"), href: "#hero" },
+                { name: t("nav.tokenomics"), href: "#tokenomics" },
+                { name: t("nav.roadmap"), href: "#roadmap" },
+                { name: t("nav.community"), href: "#community" },
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block rounded-2xl border border-white/6 bg-white/[0.02] px-4 py-3 font-headline text-xs tracking-[0.2em] text-slate-300 hover:text-primary"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </div>
     </nav>
   );
 };
@@ -147,56 +151,54 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden px-6 lg:px-24"
+      className="relative overflow-hidden px-6 pb-20 pt-40 lg:px-16"
     >
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px] -z-10" />
-      <div className="grid lg:grid-cols-2 gap-12 items-center w-full max-w-7xl mx-auto">
+      <div className="absolute inset-x-0 top-[-12rem] -z-10 h-[42rem] bg-[radial-gradient(circle_at_50%_32%,rgba(143,184,255,0.14),transparent_38%),radial-gradient(circle_at_78%_28%,rgba(109,255,241,0.14),transparent_26%),radial-gradient(circle_at_22%_78%,rgba(152,255,215,0.08),transparent_22%)]" />
+      <div className="absolute right-[-8rem] top-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-primary/10 blur-[140px]" />
+      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(430px,0.98fr)] lg:items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8 z-10"
+          className="relative z-10"
         >
-          <div className="space-y-4">
-            <BrandLockup
-              size="md"
-              showTagline
-              tagline={t("brand.tagline")}
-            />
-            <div className="inline-block px-4 py-1 border border-primary/30 bg-primary/5">
-              <span className="font-headline text-[10px] tracking-[0.3em] text-primary uppercase">
-                {t("hero.status")}
-              </span>
-            </div>
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 shadow-[0_14px_35px_rgba(2,6,23,0.18)]">
+            <span className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_16px_rgba(152,255,215,0.75)]" />
+            <span className="font-headline text-[10px] tracking-[0.34em] text-primary/90">
+              {t("hero.kicker")}
+            </span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-headline font-bold leading-[0.9] tracking-tighter">
-            {t("hero.title_prefix")}{" "}
-            <span className="text-primary block glow-text">
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_rgba(152,255,215,0.7)]" />
+            <span className="font-headline text-[10px] tracking-[0.3em] text-primary uppercase">
+              {t("hero.status")}
+            </span>
+          </div>
+          <h1 className="mt-8 max-w-[12ch] font-headline text-[clamp(4rem,12vw,7.6rem)] font-black leading-[0.86] tracking-[-0.08em]">
+            <span className="block text-white glow-text">
               {t("hero.title_main")}
-            </span>{" "}
-            <span className="text-tertiary text-4xl md:text-5xl block">
+            </span>
+            <span className="hero-title-accent mt-4 block text-[0.33em] font-bold leading-[1.1] tracking-[0.08em] md:text-[0.35em]">
               {t("hero.title_subtitle")}
             </span>
           </h1>
-          <p className="text-gray-400 max-w-md text-lg font-light leading-relaxed">
-            {t("hero.desc_by")}{" "}
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300">
             <a
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              className="font-semibold text-primary hover:text-primary-container"
             >
-              CryptoFuture2026
+              {t("hero.source_name")}
             </a>{" "}
             {t("hero.desc")}
           </p>
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="mt-9 flex flex-wrap gap-4">
             <a
               href={OKX_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary py-5 px-10 text-sm inline-flex items-center gap-2"
+              className="btn-primary inline-flex items-center gap-2 py-5 px-10 text-sm"
             >
               <CircleDollarSign className="w-4 h-4" />
               {t("hero.buy")}
@@ -205,13 +207,13 @@ const Hero = () => {
               href={OKX_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline py-5 px-10 text-sm inline-flex items-center gap-2"
+              className="btn-outline inline-flex items-center gap-2 py-5 px-10 text-sm"
             >
               <BarChart3 className="w-4 h-4" />
               {t("hero.charts")}
             </a>
           </div>
-          <div className="grid grid-cols-3 gap-4 pt-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
               { label: t("hero.price"), value: "$0.0₅24", change: "+0.64%" },
               { label: t("hero.mcap"), value: "$2.43K", change: "" },
@@ -221,15 +223,15 @@ const Hero = () => {
                 change: t("hero.network_sub"),
               },
             ].map((stat) => (
-              <div key={stat.label} className="glass-panel p-3 text-center">
-                <p className="text-[9px] font-headline text-gray-500 uppercase tracking-widest">
+              <div key={stat.label} className="hero-stat-card text-center">
+                <p className="text-[10px] font-headline text-slate-400 uppercase tracking-[0.28em]">
                   {stat.label}
                 </p>
-                <p className="text-lg font-headline font-bold text-white">
+                <p className="mt-2 text-[1.7rem] font-headline font-bold text-white">
                   {stat.value}
                 </p>
                 {stat.change && (
-                  <p className="text-[10px] text-primary">{stat.change}</p>
+                  <p className="mt-1 text-[10px] text-primary">{stat.change}</p>
                 )}
               </div>
             ))}
@@ -240,22 +242,47 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative flex justify-center items-center"
+          className="relative flex items-center justify-center"
         >
-          <div className="relative w-full max-w-lg">
-            <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full animate-pulse" />
-            <img
-              src="/avatar.jpg"
-              alt={t("hero.image_alt")}
-              className="relative z-10 w-full aspect-square object-cover grayscale brightness-125 contrast-125 hover:grayscale-0 transition-all duration-700 border border-primary/20"
-            />
-            <div className="absolute top-10 right-0 glass-panel p-4 text-[10px] font-headline text-primary tracking-widest animate-bounce">
+          <div className="relative w-full max-w-[34rem]">
+            <div className="absolute left-1/2 top-1/2 -z-10 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-tertiary/10 blur-[120px]" />
+            <div className="absolute inset-6 -z-10 rounded-full border border-white/8" />
+            <div className="absolute inset-[14%] -z-10 rounded-full border border-primary/14" />
+            <div className="relative rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(19,27,50,0.86),rgba(9,15,31,0.72))] p-4 shadow-[0_30px_80px_rgba(2,6,23,0.45)]">
+              <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_20%_18%,rgba(143,184,255,0.14),transparent_24%),radial-gradient(circle_at_80%_82%,rgba(109,255,241,0.12),transparent_25%)]" />
+              <div
+                className="portrait-shell relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface-low"
+                style={{
+                  clipPath:
+                    "polygon(12% 0,100% 0,100% 88%,88% 100%,0 100%,0 12%)",
+                }}
+              >
+                <img
+                  src="/avatar.jpg"
+                  alt={t("hero.image_alt")}
+                  className="portrait-image relative z-10 aspect-[0.96] w-full object-cover"
+                />
+                <div className="portrait-grid absolute inset-0" />
+                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(4,10,24,0.14),rgba(4,10,24,0.48))]" />
+                <div className="portrait-aura absolute -right-6 top-10 h-28 w-28 rounded-full bg-tertiary/20 blur-3xl" />
+                <div className="portrait-beam absolute inset-y-0 -left-1/3 w-1/3" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_48%_24%,rgba(255,255,255,0.18),transparent_34%)] mix-blend-screen" />
+              </div>
+              <div
+                className="pointer-events-none absolute inset-8 rounded-[1.85rem] border border-white/8 opacity-80"
+                style={{
+                  clipPath:
+                    "polygon(12% 0,100% 0,100% 88%,88% 100%,0 100%,0 12%)",
+                }}
+              />
+            </div>
+            <div className="absolute -left-4 top-8 hidden section-panel px-4 py-3 text-[10px] font-headline tracking-[0.24em] text-primary sm:block">
               {t("hero.node_strength")}
             </div>
-            <div className="absolute bottom-20 left-0 glass-panel p-4 text-[10px] font-headline text-tertiary tracking-widest">
+            <div className="absolute -right-3 top-28 hidden section-panel px-4 py-3 text-[10px] font-headline tracking-[0.24em] text-tertiary sm:block">
               {t("hero.latency")}
             </div>
-            <div className="absolute bottom-4 right-4 glass-panel p-3 text-[10px] font-headline text-primary/80 tracking-widest">
+            <div className="absolute bottom-6 left-6 section-panel px-4 py-3 text-[10px] font-headline tracking-[0.24em] text-white">
               {t("hero.solana")}
             </div>
           </div>
@@ -295,7 +322,7 @@ const TokenData = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="glass-panel p-6 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        className="section-panel p-6 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
       >
         <div>
           <p className="text-[10px] font-headline text-primary tracking-widest uppercase mb-1">
@@ -355,7 +382,7 @@ const TokenData = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="glass-panel p-6 hover:bg-primary/5 transition-colors group"
+            className="section-panel p-6 transition-colors group hover:border-primary/20 hover:bg-white/[0.03]"
           >
             <item.icon
               className={`w-8 h-8 ${item.color} mb-4 group-hover:scale-110 transition-transform`}
@@ -375,7 +402,7 @@ const TokenData = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-8 bg-gradient-to-r from-primary/10 to-tertiary/10 border border-primary/20 p-8 flex flex-col md:flex-row items-center justify-between gap-6"
+        className="section-panel mt-8 flex flex-col items-center justify-between gap-6 bg-[linear-gradient(120deg,rgba(152,255,215,0.12),rgba(143,184,255,0.1))] p-8 md:flex-row"
       >
         <div>
           <h3 className="text-xl font-headline font-bold uppercase tracking-wider">
@@ -470,9 +497,9 @@ const Vision = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`p-8 space-y-4 hover:bg-primary/5 transition-colors cursor-default ${
+            className={`p-8 space-y-4 transition-colors cursor-default ${
                 item.accent
-                  ? "bg-surface-highest border-l-4 border-primary"
+                  ? "section-panel border-primary/25 bg-[linear-gradient(160deg,rgba(18,27,49,0.92),rgba(9,17,34,0.82))]"
                   : "glass-panel"
               }`}
             >
@@ -512,7 +539,7 @@ const Tokenomics = () => {
           {t("tokenomics.label")}
         </p>
         <h2 className="text-4xl font-headline font-bold uppercase tracking-tight">
-          Tokenomics
+          {t("tokenomics.title")}
         </h2>
       </motion.div>
 
@@ -523,7 +550,7 @@ const Tokenomics = () => {
           viewport={{ once: true }}
           className="space-y-6"
         >
-          <div className="glass-panel p-8 space-y-4">
+          <div className="section-panel p-8 space-y-4">
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-headline font-bold text-lg uppercase tracking-wider">
                 {t("tokenomics.allocation")}
@@ -572,7 +599,7 @@ const Tokenomics = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-surface-low p-6 border border-white/5 hover:border-primary/20 transition-colors flex items-start gap-4"
+              className="section-panel p-6 transition-colors flex items-start gap-4 hover:border-primary/20"
             >
               <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0">
                 <item.icon className="w-5 h-5 text-primary" />
@@ -621,7 +648,7 @@ const Metrics = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="md:col-span-2 lg:col-span-3 h-64 bg-surface-low p-8 flex flex-col justify-between border border-white/5"
+          className="section-panel md:col-span-2 lg:col-span-3 h-64 p-8 flex flex-col justify-between"
         >
           <span className="font-headline text-[10px] text-gray-500 uppercase tracking-widest">
             {t("metrics.price_label")}
@@ -641,7 +668,7 @@ const Metrics = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="md:col-span-2 lg:col-span-3 h-64 bg-surface-highest p-8 flex flex-col justify-between relative overflow-hidden"
+          className="section-panel md:col-span-2 lg:col-span-3 h-64 p-8 flex flex-col justify-between relative overflow-hidden"
         >
           <TrendingUp className="absolute top-4 right-4 w-24 h-24 text-primary/10" />
           <span className="font-headline text-[10px] text-gray-500 uppercase tracking-widest">
@@ -675,7 +702,7 @@ const Metrics = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="md:col-span-2 lg:col-span-2 h-48 bg-surface-low p-6 flex flex-col justify-center gap-2"
+          className="section-panel md:col-span-2 lg:col-span-2 h-48 p-6 flex flex-col justify-center gap-2"
         >
           <p className="font-headline text-[10px] text-tertiary uppercase tracking-[0.2em]">
             {t("metrics.holders_label")}
@@ -688,7 +715,7 @@ const Metrics = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="md:col-span-4 lg:col-span-2 h-48 bg-primary p-6 flex flex-col justify-center gap-2"
+          className="md:col-span-4 lg:col-span-2 h-48 rounded-[2rem] border border-primary/20 bg-[linear-gradient(135deg,#98ffd7,#6dfff1)] p-6 shadow-[0_20px_45px_rgba(109,255,241,0.18)] flex flex-col justify-center gap-2"
         >
           <p className="font-headline text-[10px] text-black uppercase tracking-[0.2em] font-bold">
             {t("metrics.liquidity_label")}
@@ -743,7 +770,7 @@ const Roadmap = () => {
             {t("roadmap.label")}
           </p>
           <h2 className="text-4xl font-headline font-bold uppercase tracking-tight">
-            Roadmap
+            {t("roadmap.title")}
           </h2>
         </motion.div>
 
@@ -755,7 +782,7 @@ const Roadmap = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className={`relative p-6 border transition-colors ${
+              className={`relative overflow-hidden rounded-[2rem] p-6 border transition-colors ${
                 phase.status === "active"
                   ? "border-primary bg-primary/5"
                   : phase.status === "completed"
@@ -953,11 +980,11 @@ const FAQ = () => {
             {t("faq.label")}
           </p>
           <h2 className="text-4xl font-headline font-bold uppercase tracking-tight">
-            FAQ
+            {t("faq.title")}
           </h2>
         </motion.div>
 
-        <div>
+        <div className="section-panel px-6">
           {faqs.map((faq, i) => (
             <div key={faq.q}>
               <FAQItem
@@ -1010,7 +1037,7 @@ const CTA = () => {
           </a>
           <div
             onClick={handleCopy}
-            className="glass-panel p-4 rounded-none border-primary/20 cursor-pointer hover:bg-primary/5 transition-colors group"
+            className="section-panel cursor-pointer border-primary/20 p-4 transition-colors group hover:bg-white/[0.04]"
           >
             <p className="text-[10px] font-headline text-primary tracking-widest uppercase mb-2">
               {t("cta.contract")}
@@ -1039,10 +1066,10 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start gap-4">
           <BrandLockup
             size="sm"
-            showTagline
-            tagline={t("brand.tagline")}
+            showMeta
+            meta={t("brand.meta")}
           />
-          <p className="font-headline text-[10px] tracking-widest uppercase text-gray-500">
+          <p className="font-headline text-[10px] tracking-[0.2em] text-gray-500">
             {t("footer.rights")}
           </p>
           <p className="text-[10px] text-gray-600">{t("footer.risk")}</p>

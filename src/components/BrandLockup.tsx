@@ -2,79 +2,57 @@ type BrandLockupSize = "sm" | "md" | "lg";
 
 type BrandLockupProps = {
   className?: string;
-  showTagline?: boolean;
+  showMeta?: boolean;
   size?: BrandLockupSize;
-  tagline?: string;
+  meta?: string;
 };
 
 const sizeMap = {
   sm: {
-    frame: "rounded-[1.15rem] p-1",
-    mark: "h-10 w-10",
-    name: "text-xl",
-    tagline: "text-[8px]",
-    gap: "gap-3",
+    wordmark: "h-6 md:h-7",
+    tagline: "text-[9px]",
   },
   md: {
-    frame: "rounded-[1.3rem] p-1.5",
-    mark: "h-12 w-12",
-    name: "text-[1.95rem]",
-    tagline: "text-[9px]",
-    gap: "gap-3.5",
+    wordmark: "h-8 md:h-9",
+    tagline: "text-[10px]",
   },
   lg: {
-    frame: "rounded-[1.5rem] p-2",
-    mark: "h-16 w-16",
-    name: "text-4xl md:text-5xl",
-    tagline: "text-[10px]",
-    gap: "gap-4",
+    wordmark: "h-10 md:h-11",
+    tagline: "text-[11px]",
   },
 } satisfies Record<
   BrandLockupSize,
   {
-    frame: string;
-    mark: string;
-    name: string;
+    wordmark: string;
     tagline: string;
-    gap: string;
   }
 >;
 
 export default function BrandLockup({
   className = "",
-  showTagline = true,
+  showMeta = true,
   size = "md",
-  tagline = "The Neural Ledger",
+  meta = "CryptoFuture2026",
 }: BrandLockupProps) {
   const styles = sizeMap[size];
-  const isAsciiTagline = /^[\x00-\x7F\s]+$/.test(tagline);
+  const isAsciiMeta = /^[\x00-\x7F\s]+$/.test(meta);
 
   return (
-    <div className={`flex items-center ${styles.gap} ${className}`}>
-      <div className={`brand-frame ${styles.frame}`}>
-        <img
-          src="/brand-mark.svg"
-          alt=""
-          aria-hidden="true"
-          className={`brand-mark block ${styles.mark}`}
-        />
-      </div>
-      <div className="leading-none">
-        <div className={`font-headline font-black tracking-[-0.08em] ${styles.name}`}>
-          <span className="text-white">JM</span>
-          <span className="text-primary">W</span>
-          <span className="text-tertiary">L</span>
+    <div className={`leading-none ${className}`}>
+      <img
+        src="/brand-wordmark.png"
+        alt="JMWL"
+        className={`brand-wordmark-img block w-auto ${styles.wordmark}`}
+      />
+      {showMeta && (
+        <div
+          className={`brand-meta mt-1 font-headline text-primary/72 ${
+            isAsciiMeta ? "uppercase tracking-[0.34em]" : "tracking-[0.18em]"
+          } ${styles.tagline}`}
+        >
+          {meta}
         </div>
-        {showTagline && (
-          <div
-            className={`mt-1 font-headline text-primary/70 ${
-              isAsciiTagline ? "uppercase tracking-[0.32em]" : "tracking-[0.14em]"
-            } ${styles.tagline}`}
-          >
-            {tagline}
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 }

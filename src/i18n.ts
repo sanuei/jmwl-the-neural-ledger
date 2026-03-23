@@ -4,35 +4,34 @@ export type Lang = "zh" | "en";
 
 export const translations: Record<Lang, Record<string, string>> = {
   zh: {
-    "brand.tagline": "神经账本",
+    "brand.meta": "加密未来2026",
 
     // 导航
-    "nav.launchpad": "Launchpad",
-    "nav.tokenomics": "Tokenomics",
-    "nav.roadmap": "Roadmap",
+    "nav.launchpad": "首页",
+    "nav.tokenomics": "代币经济",
+    "nav.roadmap": "发展路线",
     "nav.community": "社区",
     "nav.whitepaper": "白皮书",
-    "nav.buy": "购买 $JMWL",
+    "nav.buy": "买入 JMWL",
 
     // 英雄区
-    "hero.status": "🟢 Solana 主网激活",
-    "hero.title_prefix": "JMWL：",
-    "hero.title_main": "神经账本",
-    "hero.title_subtitle": "加密未来",
-    "hero.subtitle": "加密未来",
-    "hero.desc": "社区驱动的 Solana 生态代币。重新定义去中心化架构，为下一代高保真区块链运营而生。",
-    "hero.desc_by": "由",
-    "hero.buy": "购买代币",
-    "hero.charts": "查看图表",
-    "hero.price": "当前价格",
+    "hero.kicker": "加密未来2026 生态通证",
+    "hero.status": "索拉纳主网在线",
+    "hero.title_main": "未来智链",
+    "hero.title_subtitle": "2026 加密信号网络",
+    "hero.desc": "社区发起的索拉纳生态通证，围绕内容影响力、链上流动性与未来叙事构建下一代加密信号网络。",
+    "hero.source_name": "加密未来2026",
+    "hero.buy": "立即交易",
+    "hero.charts": "查看行情",
+    "hero.price": "现价",
     "hero.mcap": "市值",
-    "hero.network": "网络",
+    "hero.network": "公链",
     "hero.network_value": "索拉纳",
-    "hero.network_sub": "SPL 标准",
-    "hero.node_strength": "节点强度：99.8%",
-    "hero.latency": "延迟：0.002 毫秒",
-    "hero.solana": "Solana 主网",
-    "hero.image_alt": "JMWL 神经账本视觉图",
+    "hero.network_sub": "SPL 资产",
+    "hero.node_strength": "信号稳定度 99.8%",
+    "hero.latency": "撮合延迟 0.002 毫秒",
+    "hero.solana": "索拉纳主网",
+    "hero.image_alt": "未来智链视觉封面",
 
     // 代币数据
     "token.title_label": "代币信息",
@@ -74,6 +73,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Tokenomics
     "tokenomics.label": "代币经济学",
+    "tokenomics.title": "代币经济",
     "tokenomics.allocation": "代币分配",
     "tokenomics.total": "总量: 1,000,000,000",
     "tokenomics.airdrop": "社区空投",
@@ -108,6 +108,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // 路线图
     "roadmap.label": "发展路线",
+    "roadmap.title": "发展路线",
     "roadmap.p1": "Phase 01",
     "roadmap.p1_title": "创世启动",
     "roadmap.p1_1": "Pump.fun 公平发射",
@@ -149,6 +150,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // FAQ
     "faq.label": "常见问题",
+    "faq.title": "常见问题",
     "faq.q1": "什么是 JMWL 代币？",
     "faq.a1": "JMWL（加密未来）是一个在 Solana 区块链上通过 Pump.fun 公平发射的社区驱动代币。它与 CryptoFuture2026 YouTube 频道生态系统紧密相连，旨在为加密社区提供一个透明、开放的参与平台。",
     "faq.q2": "如何购买 JMWL？",
@@ -161,23 +163,23 @@ export const translations: Record<Lang, Record<string, string>> = {
     "faq.a5": "你可以通过关注 CryptoFuture2026 YouTube 频道来了解最新动态，加入我们的社交媒体社群参与讨论，或直接持有 JMWL 代币成为社区的一部分。",
 
     // CTA
-    "cta.title": "加入神经网络",
-    "cta.desc": "加入数千名早期参与者的行列，共同保护神经账本的未来。2026 的地平线比你想象的更近。",
+    "cta.title": "接入未来智链",
+    "cta.desc": "加入更早一批接入 2026 加密信号网络的参与者，在链上流动性与社区叙事交汇处占据先机。",
     "cta.btn": "立即购买",
     "cta.contract": "合约地址 (Solana) — 点击复制",
     "cta.copied": "✓ 已复制到剪贴板",
 
     // 页脚
-    "footer.rights": "© 2026 JMWL NEURAL LEDGER. ALL RIGHTS RESERVED.",
+    "footer.rights": "© 2026 JMWL / CryptoFuture2026 保留所有权利。",
     "footer.risk": "加密货币投资有风险，请在投资前做好自己的调研 (DYOR)。",
 
     // SEO
-    "seo.title": "JMWL 神经账本 | CryptoFuture2026",
-    "seo.description": "JMWL 神经账本是 CryptoFuture2026 打造的 Solana 项目落地页，聚焦代币信息、路线图、社区入口与链上愿景。",
+    "seo.title": "JMWL 未来智链 | CryptoFuture2026",
+    "seo.description": "JMWL 未来智链是 CryptoFuture2026 打造的索拉纳项目落地页，聚焦代币信息、路线图、社区入口与未来叙事。",
   },
 
   en: {
-    "brand.tagline": "The Neural Ledger",
+    "brand.meta": "CryptoFuture2026",
 
     // 导航
     "nav.launchpad": "Launchpad",
@@ -188,24 +190,23 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.buy": "Buy $JMWL",
 
     // 英雄区
-    "hero.status": "🟢 Solana Mainnet Active",
-    "hero.title_prefix": "JMWL:",
-    "hero.title_main": "The Neural Ledger",
-    "hero.title_subtitle": "Crypto Future",
-    "hero.subtitle": "Crypto Future",
-    "hero.desc": "A community-driven Solana ecosystem token. Redefining decentralized architecture, built for the next generation of high-fidelity blockchain operations.",
-    "hero.desc_by": "Powered by",
+    "hero.kicker": "CryptoFuture2026 Signal Asset",
+    "hero.status": "Solana Mainnet Online",
+    "hero.title_main": "Future Signal Chain",
+    "hero.title_subtitle": "A 2026 Crypto Signal Network",
+    "hero.desc": "A community-initiated Solana asset that ties together content reach, on-chain liquidity, and forward-looking market narratives into one signal-driven network.",
+    "hero.source_name": "CryptoFuture2026",
     "hero.buy": "Buy Token",
-    "hero.charts": "View Charts",
+    "hero.charts": "View Market",
     "hero.price": "Price",
     "hero.mcap": "Market Cap",
-    "hero.network": "Network",
+    "hero.network": "Chain",
     "hero.network_value": "Solana",
-    "hero.network_sub": "SPL",
-    "hero.node_strength": "NODE_STRENGTH: 99.8%",
-    "hero.latency": "LATENCY: 0.002MS",
-    "hero.solana": "SOLANA MAINNET",
-    "hero.image_alt": "JMWL Neural Ledger visual",
+    "hero.network_sub": "SPL Asset",
+    "hero.node_strength": "Signal Stability 99.8%",
+    "hero.latency": "Latency 0.002 ms",
+    "hero.solana": "Solana Mainnet",
+    "hero.image_alt": "Future Signal Chain visual",
 
     // 代币数据
     "token.title_label": "Token Info",
@@ -247,6 +248,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Tokenomics
     "tokenomics.label": "Token Economics",
+    "tokenomics.title": "Tokenomics",
     "tokenomics.allocation": "Token Allocation",
     "tokenomics.total": "Total: 1,000,000,000",
     "tokenomics.airdrop": "Community Airdrop",
@@ -281,6 +283,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // 路线图
     "roadmap.label": "Development Roadmap",
+    "roadmap.title": "Roadmap",
     "roadmap.p1": "Phase 01",
     "roadmap.p1_title": "Genesis Launch",
     "roadmap.p1_1": "Pump.fun Fair Launch",
@@ -322,6 +325,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // FAQ
     "faq.label": "Frequently Asked Questions",
+    "faq.title": "FAQ",
     "faq.q1": "What is JMWL token?",
     "faq.a1": "JMWL (Crypto Future) is a community-driven token fairly launched on the Solana blockchain via Pump.fun. It is closely connected to the CryptoFuture2026 YouTube channel ecosystem, aiming to provide a transparent and open participation platform for the crypto community.",
     "faq.q2": "How to buy JMWL?",
@@ -334,8 +338,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "faq.a5": "You can follow the CryptoFuture2026 YouTube channel for the latest updates, join our social media communities for discussions, or simply hold JMWL tokens to become part of the community.",
 
     // CTA
-    "cta.title": "Join The Neural Network",
-    "cta.desc": "Join thousands of early adopters securing the future of the neural ledger. The 2026 horizon is closer than you think.",
+    "cta.title": "Tap Into The Signal Network",
+    "cta.desc": "Join the earliest participants positioning around the 2026 crypto signal network, where community reach meets on-chain liquidity.",
     "cta.btn": "Buy Now",
     "cta.contract": "Contract Address (Solana) — Click to Copy",
     "cta.copied": "✓ Copied to Clipboard",
@@ -345,7 +349,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.risk": "Crypto investment involves risk. Always DYOR before investing.",
 
     // SEO
-    "seo.title": "JMWL Neural Ledger | CryptoFuture2026",
-    "seo.description": "Explore the JMWL Neural Ledger landing page by CryptoFuture2026, covering token data, roadmap, community links, and the Solana project vision.",
+    "seo.title": "JMWL Future Signal Chain | CryptoFuture2026",
+    "seo.description": "Explore the JMWL Future Signal Chain landing page by CryptoFuture2026, covering token data, roadmap, community links, and the Solana project thesis.",
   },
 };
